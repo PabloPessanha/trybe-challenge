@@ -6,6 +6,10 @@
 2. Deverá ter as opçõesde criar um novo usuário, atualizar, ver e deletar.
 3. Deverá possuir um formato de busca por quaisquer um dos campos cadastrado, devendo retornar todas os resultados por ele.
 
+**A partir desses conceitos, tomei a liberdade de fazer um diagrama para me guiar durante a produção, o resultado ficou desse jeito:**
+
+<img src="assets/Screenshot_20210622_213331.png" alt="Diagrama de produção - Backend" width="600"/>
+
 ### Itens obrigatórios
 
   - [ ] Conter as operações **CRUD** (Create, Read, Update and Delete);
