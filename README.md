@@ -10,12 +10,12 @@
 
   - [ ] Conter as operações **CRUD** (Create, Read, Update and Delete);
   - [ ] Fazer pesquisa por todos os campos cadastrados;
-  - [ ] Utilizar uma lib para validações (opção: [YUP](youtu.be/Je3RSqmEV-Y));
+  - [ ] Utilizar uma lib para validações (opção: [YUP](https://youtu.be/Je3RSqmEV-Y);
   - [ ] Utilizar ORM (pref: Sequelize);
   - [ ] Apenas funções especializadas;
-  - [ ] Swagger para documentar a API ([vídeo de exemplo](youtu.be/apouPYPh_as));
+  - [ ] Swagger para documentar a API ([vídeo de exemplo](https://youtu.be/apouPYPh_as));
   - [ ] Implementar testes unitários;
-  - [ ] Fazer deploy (pref: [AWS](youtu.be/kqBCHYf_adA));
+  - [ ] Fazer deploy (pref: [AWS](https://youtu.be/kqBCHYf_adA));
   - [ ] Small commits;
 
 ### Diferenciais
