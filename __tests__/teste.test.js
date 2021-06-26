@@ -1,10 +1,21 @@
 const frisby = require('frisby');
+const shell = require('shelljs');
 const devs = require('../utils/devs');
 require('dotenv').config();
 
 const URL = process.env.USER_URL || 'http://localhost:3000/developer';
 
 describe('Verifica o método POST da URL "/developer"', () => {
+  beforeEach(() => {
+    shell.exec('npx sequelize-cli db:drop');
+    shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
+  });
+
+  afterAll(() => {
+    shell.exec('npx sequelize-cli db:migrate:undo:all');
+    shell.exec('npx sequelize-cli db:migrate');
+  });
+
   it('Verifica se o  status é 200 quando todos os campos são passados corretamente', async () => {
     let response = await frisby.post(URL, devs[0]);
     const firstPerson = JSON.parse(response.body);
