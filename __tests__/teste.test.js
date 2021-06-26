@@ -1,15 +1,26 @@
-function soma(a, b) {
-  return a + b;
-}
+const frisby = require('frisby');
+const devs = require('../utils/devs');
+require('dotenv').config();
 
-describe('testa se a função soma funciona', () => {
-  it('verifica se 1 + 1 da 2', () => {
-    const somaCerta = soma(1, 1);
-    const somaErrada = soma(1, 2);
-    const somaStrings = soma(1, '2');
+const URL = process.env.USER_URL || 'http://localhost:3000/developer';
 
-    expect(somaErrada).not.toBe(2);
-    expect(somaStrings).not.toBe(2);
-    expect(somaCerta).toBe(2);
+describe('Verifica o método POST da URL "/developer"', () => {
+  it('Verifica se o  status é 200 quando todos os campos são passados corretamente', async () => {
+    let response = await frisby.post(URL, devs[0]);
+    const firstPerson = JSON.parse(response.body);
+
+    expect(response.status).toBe(200);
+    expect(firstPerson.id).toBe(1);
+    expect(firstPerson.name).toBe('Pablo');
+
+    response = await frisby.post(URL, devs[1]);
+    const secondPerson = JSON.parse(response.body);
+    expect(response.status).toBe(200);
+    expect(secondPerson.id).toBe(2);
+    expect(secondPerson.name).toBe('Renato');
+  });
+
+  it('Verifica se o retorno de dado é correto', async () => {
+
   });
 });
