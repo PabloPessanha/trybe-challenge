@@ -1,7 +1,6 @@
 
 {
     "root": true,
-    "es2021": true,
     "extends": ["trybe-backend"],
     "rules": {
         "camelcase": ["off"],
