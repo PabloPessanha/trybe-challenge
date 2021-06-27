@@ -9,15 +9,21 @@ class DeveloperServices {
     this.skills = skills;
 
     this.validateName();
+    this.validateTelephone();
   }
 
   async validateName() {
-    try {
-      const validator = Joi.string().min(5).required();
-      validator.validateAsync(this.name);
-    } catch (e) {
-      throw new Error(e.message);
-    }
+    const validator = Joi.string().min(5).required();
+    await validator.validateAsync(this.name)
+      .then()
+      .catch(({ message }) => { throw new Error(message); });
+  }
+
+  async validateTelephone() {
+    const validator = Joi.string().length(10).pattern(/^\d+$/).required();
+    await validator.validateAsync(this.telphone_number.toString())
+      .then()
+      .catch(({ message }) => { throw new Error(message); });
   }
 }
 
