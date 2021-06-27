@@ -4,6 +4,7 @@
     "extends": ["trybe-backend"],
     "rules": {
         "camelcase": ["off"],
-        "max-lines-per-function": ["off"]
+        "max-lines-per-function": ["off"],
+        "class-methods-use-this": ["off"]
     }
 }
