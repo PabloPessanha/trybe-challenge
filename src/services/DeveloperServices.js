@@ -37,7 +37,12 @@ async function DeveloperServices(obj) {
 
   async function validateCep() {
     return await cepPromise(obj.cep)
-      .then((adress) => adress)
+      .then((address) => ({ 
+        rua: address.street, 
+        bairro: address.neighborhood, 
+        cidade: address.city, 
+        uf: address.state, 
+        cep }))
       .catch((_err) => { throw new Error('Cep inválido') });
   }
 
