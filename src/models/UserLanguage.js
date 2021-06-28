@@ -1,20 +1,18 @@
-module.exports = (sequelize, DataTypes) => {
-  const UserLanguage = sequelize.define('userLanguage', {
-    user_id: DataTypes.INTEGER,
-    language_id: DataTypes.INTEGER,
-  }, { timestamps: false, tableName: 'userLanguages' });
+module.exports = (sequelize, _DataTypes) => {
+  const UserLanguage = sequelize.define('userLanguage', {}, 
+  { timestamps: false, tableName: 'userLanguages' });
 
   UserLanguage.associate = (models) => {
-    UserLanguage.belongsToMany(models.User, { 
+    UserLanguage.belongsToMany(models.user, { 
       as: 'users',
-      through: UserLanguage,
+      through: 'userLanguages',
       foreignKey: 'language_id',
       otherKey: 'user_id',
     });
   
-    UserLanguage.belongsToMany(models.Language, { 
+    UserLanguage.belongsToMany(models.language, { 
       as: 'languages',
-      through: UserLanguage,
+      through: 'userLanguages',
       foreignKey: 'user_id',
       otherKey: 'language_id',
     });
