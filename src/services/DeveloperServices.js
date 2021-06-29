@@ -44,4 +44,5 @@ async function createUser({ name, telphone_number = null, celphone_number, cep, 
 
 module.exports = {
   createUser,
+  getCepData,
 };
