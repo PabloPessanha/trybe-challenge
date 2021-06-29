@@ -3,16 +3,16 @@ module.exports = (sequelize, _DataTypes) => {
   { timestamps: false, tableName: 'userLanguages' });
 
   UserLanguage.associate = (models) => {
-    UserLanguage.belongsToMany(models.user, { 
+    models.language.belongsToMany(models.user, { 
       as: 'users',
-      through: 'userLanguages',
+      through: UserLanguage,
       foreignKey: 'language_id',
       otherKey: 'user_id',
     });
   
-    UserLanguage.belongsToMany(models.language, { 
+    models.user.belongsToMany(models.language, { 
       as: 'languages',
-      through: 'userLanguages',
+      through: UserLanguage,
       foreignKey: 'user_id',
       otherKey: 'language_id',
     });
