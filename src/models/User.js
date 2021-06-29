@@ -5,5 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     celphone_number: DataTypes.STRING,
   }, { timestamps: false, tableName: 'users' });
 
+  User.associate = (models) => {
+    User.hasOne(models.address, { foreignKey: 'user_id' });
+  };
+
   return User;
 };
