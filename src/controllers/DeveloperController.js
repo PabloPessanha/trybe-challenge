@@ -1,6 +1,6 @@
 const formatUserResponse = require('../helpers/formatUserResponse');
-const { user: User, language: Language, address: Address } = require('../models');
 const { createUser } = require('../services/DeveloperServices');
+const DatabaseServices = require('../services/DatabaseServices');
 
 class DeveloperController {
   async store(req, res) {
@@ -15,14 +15,8 @@ class DeveloperController {
   }
 
   async getById(req, res) {
-    const user = await User.findOne({ 
-      where: { id: req.params.id }, 
-      include: [
-        { model: Language, as: 'languages' }, 
-        { model: Address, as: 'address', attributes: { exclude: ['user_id'] } },
-      ],
-      attributes: { exclude: ['id'] },
-    });
+    const user = await DatabaseServices.getUserById(req.params.id);
+
     if (!user) return res.status(404).json({ message: 'User not found!' });
     const finalUser = formatUserResponse(user.dataValues);
 
@@ -30,17 +24,10 @@ class DeveloperController {
   }
 
   async getAllUsers(_req, res) {
-    const users = await User.findAll({
-      include: [
-        { model: Language, as: 'languages' },
-        { model: Address, as: 'address', attributes: { exclude: ['user_id'] } },
-      ],
-      attributes: { exclude: ['id'] },
-    });
-    if (!users) return res.status(404).json({ message: 'No users found' });
+    const users = await DatabaseServices.getAllUsers();
     const finalUsers = users.map(({ dataValues }) => formatUserResponse(dataValues));
 
-    return res.status(400).json(finalUsers);
+    return res.status(200).json(finalUsers);
   }
 }
 
