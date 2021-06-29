@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, { timestamps: false, tableName: 'addresses' });
 
   Address.associate = (models) => {
-    Address.belongsTo(models.user, { foreignKey: 'user_id', as: 'user' });
+    Address.belongsTo(models.user, { as: 'address', foreignKey: 'user_id' });
   };
   
   Address.removeAttribute('id');
