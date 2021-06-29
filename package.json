@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "seq:up": "sequelize db:migrate && sequelize db:seed:all",
+    "seq:down": "sequelize db:migrate:undo:all"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
