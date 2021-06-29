@@ -1,6 +1,6 @@
 const cepPromise = require('cep-promise');
 const { Op } = require('sequelize');
-const { user: User, address: Address, language: Language, userLanguages } = require('../models');
+const { user: User, address: Address, language: Language, userLanguage } = require('../models');
 
 async function getCepData(cep) {
   return cepPromise(cep)
@@ -18,7 +18,7 @@ async function addUserSkills(skills, user_id) {
     const { dataValues } = await Language.findOne({ where: { language: { [Op.iLike]: skill } } });
     const { id: language_id, language } = dataValues;
 
-    await userLanguages.create({ language_id, user_id });
+    await userLanguage.create({ language_id, user_id });
     return language;
   }));
 
