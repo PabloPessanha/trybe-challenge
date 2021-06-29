@@ -14,8 +14,8 @@
 
   - [ ] Conter as operações **CRUD** (Create, Read, Update and Delete);
   - [ ] Fazer pesquisa por todos os campos cadastrados;
-  - [ ] Utilizar uma lib para validações (opção: [YUP](https://youtu.be/Je3RSqmEV-Y));
-  - [ ] Utilizar ORM (pref: Sequelize);
+  - [x] Utilizar uma lib para validações (opção: [YUP](https://youtu.be/Je3RSqmEV-Y));
+  - [x] Utilizar ORM (pref: Sequelize);
   - [ ] Apenas funções especializadas;
   - [ ] Swagger para documentar a API ([vídeo de exemplo](https://youtu.be/apouPYPh_as));
   - [ ] Implementar testes unitários;
