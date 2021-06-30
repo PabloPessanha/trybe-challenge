@@ -28,15 +28,16 @@ async function getAllUsers() {
 }
 
 async function updateUser(id, { name, telphone_number, celphone_number, cep, skills }) {
+  const checkUserExists = User.findByPk(id);
+  if (!checkUserExists) { throw new Error('User not found!'); }
+
   const address = await getCepData(cep);
 
-  const newAddress = await Address.update(address, { where: { id } });
-  const user = await User.update({ name, telphone_number, celphone_number }, { where: { id } });
+  await Address.update(address, { where: { user_id: id } });
+  await User.update({ name, telphone_number, celphone_number }, { where: { id } });
 
-  await userLanguage.destroy({ where: { id } });
-  const languages = await addUserSkills(skills, id);
-
-  return { ...user, address: newAddress, languages };
+  await userLanguage.destroy({ where: { user_id: id } });
+  await addUserSkills(skills, id);
 }
 
 async function deleteUser(id) {
