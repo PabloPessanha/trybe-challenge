@@ -12,7 +12,7 @@
 
 ### Itens obrigatórios
 
-  - [ ] Conter as operações **CRUD** (Create, Read, Update and Delete);
+  - [x] Conter as operações **CRUD** (Create, Read, Update and Delete);
   - [ ] Fazer pesquisa por todos os campos cadastrados;
   - [x] Utilizar uma lib para validações (opção: [YUP](https://youtu.be/Je3RSqmEV-Y));
   - [x] Utilizar ORM (pref: Sequelize);
@@ -20,7 +20,7 @@
   - [ ] Swagger para documentar a API ([vídeo de exemplo](https://youtu.be/apouPYPh_as));
   - [ ] Implementar testes unitários;
   - [ ] Fazer deploy (pref: [AWS](https://youtu.be/kqBCHYf_adA));
-  - [ ] Small commits;
+  - [x] Small commits;
 
 ### Diferenciais
  - [ ] Docker
