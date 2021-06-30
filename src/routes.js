@@ -7,5 +7,6 @@ const developer = new Router();
 developer.post('/developer', validateAll, DeveloperController.store);
 developer.get('/developer', DeveloperController.getAllUsers);
 developer.get('/developer/:id', DeveloperController.getById);
+developer.delete('/developer/:id', DeveloperController.delete);
 
 module.exports = developer;
