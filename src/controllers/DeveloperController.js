@@ -9,18 +9,19 @@ class DeveloperController {
 
       return res.status(200).json(userData);
     } catch ({ message }) {
-      if (message) return res.status(400).json({ message });
-      return res.status(500).json({ message: 'internal error' });
+      return res.status(400).json({ message });
     }
   }
 
   async getById(req, res) {
-    const user = await DatabaseServices.getUserById(req.params.id);
+    try {
+      const user = await DatabaseServices.getUserById(req.params.id);
 
-    if (!user) return res.status(404).json({ message: 'User not found!' });
-    const finalUser = formatUserResponse(user.dataValues);
-
-    return res.status(200).json(finalUser);
+      const finalUser = formatUserResponse(user.dataValues);
+      return res.status(200).json(finalUser);
+    } catch ({ message }) {
+      return res.status(404).json({ message });
+    }
   }
 
   async getAllUsers(_req, res) {
@@ -28,6 +29,17 @@ class DeveloperController {
     const finalUsers = users.map(({ dataValues }) => formatUserResponse(dataValues));
 
     return res.status(200).json(finalUsers);
+  }
+
+  async delete(req, res) {
+    try {
+      await DatabaseServices.getUserById(req.params.id);
+
+      await DatabaseServices.deleteUser(req.params.id);
+      return res.status(204).end();
+    } catch ({ message }) {
+      return res.status(404).json({ message });
+    }
   }
 }
 
