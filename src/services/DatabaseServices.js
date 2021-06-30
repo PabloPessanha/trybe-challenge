@@ -38,8 +38,13 @@ async function updateUser(id, { name, telphone_number, celphone_number, cep, ski
   return { ...user, address: newAddress, languages };
 }
 
+async function deleteUser(id) {
+  await User.destroy({ where: { id } });
+}
+
 module.exports = {
   getUserById,
   getAllUsers,
   updateUser,
+  deleteUser,
 };
