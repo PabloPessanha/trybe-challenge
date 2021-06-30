@@ -10,6 +10,7 @@ async function getUserById(id) {
     ],
     attributes: { exclude: ['id'] },
   });
+  if (!user) { throw new Error('User not found!'); }
 
   return user;
 }
