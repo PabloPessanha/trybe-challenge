@@ -5,6 +5,7 @@
     "rules": {
         "camelcase": ["off"],
         "max-lines-per-function": ["off"],
-        "class-methods-use-this": ["off"]
+        "class-methods-use-this": ["off"],
+        "sonarjs/no-duplicate-string": ["off"]
     }
 }
