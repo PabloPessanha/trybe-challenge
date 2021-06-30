@@ -41,6 +41,16 @@ class DeveloperController {
       return res.status(404).json({ message });
     }
   }
+
+  async update(req, res) {
+    try {
+      await DatabaseServices.updateUser(req.params.id, req.body);
+
+      return res.status(204).end();
+    } catch ({ message }) {
+      return res.status(404).json({ message });
+    }
+  }
 }
 
 module.exports = new DeveloperController();
